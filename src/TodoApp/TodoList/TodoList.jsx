@@ -3,13 +3,14 @@ import AddTodo from '../AddTodo/AddTodo';
 import SingleTodo from '../SingleTodo/SingleTodo';
 
 const initTodos = [
-  { id: 1, title: 'Do sport', isDone: true },
-  { id: 2, title: 'Do jogging', isDone: false },
+  //   { id: 1, title: 'Do sport', isDone: true },
+  //   { id: 2, title: 'Do jogging', isDone: false },
 ];
 
 export default function TodoList() {
   const [todoArray, setTodoArray] = useState(initTodos);
   const [newTodo, setNewTodo] = useState('');
+  const [currentId, setCurrentId] = useState(4);
 
   console.log('todoArray ===', todoArray);
 
@@ -17,41 +18,27 @@ export default function TodoList() {
     setNewTodo(event.target.value);
   }
 
-  //   function errorMsg() {
-  //     const errEl = document.getElementById('error-msg');
-  //     if (newTodo.length > 0) {
-  //       errEl.textContent = 'Added new Todo ';
-  //       errEl.style.color = 'green';
-  //       setNewTodo('');
-  //     }
-
-  //     if (newTodo.length < 1) {
-  //       console.log('newTodo.length ===', newTodo.length);
-  //       errEl.textContent = 'Please enter something';
-  //       errEl.style.color = 'red';
-  //       setNewTodo('');
-  //     }
-  //   }
-
   // sukurti funkcija kuri prideda nauja todo
-  function createTodo() {
-    const errEl = document.getElementById('error-msg');
+  function createTodo(event) {
+    event.preventDefault();
+    const msgEl = document.getElementById('msg');
     if (newTodo.length < 1) {
-      console.log('newTodo.length ===', newTodo.length);
-      errEl.textContent = 'Please enter something';
-      errEl.style.color = 'red';
-      setNewTodo('');
+      msgEl.textContent = 'Please enter something';
+      msgEl.style.color = 'red';
       return;
     } else {
-      errEl.textContent = 'Added new Todo ';
-      errEl.style.color = 'green';
-      const todo = { id: 3, title: newTodo, isDone: false };
-      console.log('todo ===', todo);
+      msgEl.textContent = 'Added new Todo ';
+      msgEl.style.color = 'green';
 
+      const todo = { id: currentId, title: newTodo, isDone: false };
+      console.log('todo ===', todo);
+      //   setNewTodo('');
       setTodoArray([...todoArray, todo]);
+      setCurrentId((prevId) => prevId + 1);
 
       setNewTodo('');
     }
+    return;
   }
 
   // { id: 3, title: 'Buy sugar', isDone: false }
@@ -81,6 +68,7 @@ export default function TodoList() {
           <i className='fa fa-trash delete-icon' aria-hidden='true'></i>
         </li>
       </ul>
+
       <AddTodo onClick={createTodo} onChange={todoEnterHandler} />
     </section>
   );
