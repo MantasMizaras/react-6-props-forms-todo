@@ -1,23 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      {/* <TodoApp /> */}
+      <div className='container'>
+        <header>
+          <div className='clear'>
+            <i id='reset' className='fa fa-refresh'></i>
+          </div>
+          <h3 className='done-todo-count'></h3>
+          <p id='date' className='date'>
+            Kraunasi...
+          </p>
+          <img className='img-fluid cover-img' src='img/gold.jpg' alt='Cover' />
+        </header>
+        <section className='content'>
+          <ul id='list' className='list'>
+            <li className='item '>
+              <i className='fa fa-circle-thin make-done' aria-hidden='true'></i>
+              <span className='text'> new todo</span>
+              <i className='fa fa-pencil edit-icon' aria-hidden='true'></i>
+              <i className='fa fa-trash delete-icon' aria-hidden='true'></i>
+            </li>
+            <li className='item line-through'>
+              <i className='fa fa-check-circle make-done' aria-hidden='true'></i>
+              <span className='text'> done todo</span>
+              <i className='fa fa-pencil edit-icon' aria-hidden='true'></i>
+              <i className='fa fa-trash delete-icon' aria-hidden='true'></i>
+            </li>
+          </ul>
+          <div className='add-item'>
+            <i id='add-todo-btn' className='fa fa-plus-circle' aria-hidden='true'></i>
+            <input type='text' id='input' placeholder='Add todo' />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
