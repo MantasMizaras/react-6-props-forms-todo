@@ -1,4 +1,4 @@
-export default function Header() {
+export default function TodoHeader() {
   return (
     <header>
       <div className='clear'>

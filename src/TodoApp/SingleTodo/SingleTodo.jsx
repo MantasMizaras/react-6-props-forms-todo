@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Icon from '../UI/Icon';
 
-export default function SingleTodo({ title }) {
-  const [isDone, setIsDone] = useState(false);
+export default function SingleTodo({ title, isDone: isDoneProp }) {
+  const [isDone, setIsDone] = useState(isDoneProp);
 
   // fa-check-circle => done todo
   // item line-through => done todo
@@ -16,10 +16,13 @@ export default function SingleTodo({ title }) {
   function clickHandler() {
     // kai paspaudziu ant <i className={`fa fa-home`} aria-hidden='true'></i> iskonsolinu "paspaudei"
     console.log('paspaudei');
+
     // pakeisti statusa i true
     // setIsDone(true) // kai state nepriklauso nuo pries tai buvusios
+
     // pakeisti statusa i priesinga dabartiniam
     // setIsDone(!isDone); // kai state nepriklauso nuo pries tai buvusios
+
     setIsDone((prevIsDone) => !prevIsDone); // kai state priklauso nuo pries tai buvusios
   }
 
