@@ -11,17 +11,21 @@ export default function SingleTodo({ title }) {
   // fa-circle-thin => ne done todo
 
   // kai paspaudziu ant rutulioko ikoneles pakeiciu isDone statusa i priesinga
-  // kai paspaudziu ant <i className={`fa fa-home`} aria-hidden='true'></i> iskonsolinu "paspaudei"
   // kai paspaudziu ant rutulioko ikoneles iskonsolinu "paspaudei"
 
   function clickHandler() {
+    // kai paspaudziu ant <i className={`fa fa-home`} aria-hidden='true'></i> iskonsolinu "paspaudei"
     console.log('paspaudei');
+    // pakeisti statusa i true
+    // setIsDone(true) // kai state nepriklauso nuo pries tai buvusios
+    // pakeisti statusa i priesinga dabartiniam
+    // setIsDone(!isDone); // kai state nepriklauso nuo pries tai buvusios
+    setIsDone((prevIsDone) => !prevIsDone); // kai state priklauso nuo pries tai buvusios
   }
 
   return (
     <li className={isDone === true ? 'item line-through' : 'item'}>
       <Icon onClick={clickHandler} icon={isDone === true ? 'fa-check-circle' : 'fa-circle-thin'} />
-      {/* <i onClick={clickHandler} className={`fa fa-home`} aria-hidden='true'></i> */}
       <span className='text'>{title}</span>
       <Icon icon='fa-pencil' />
       <Icon icon='fa-trash' />
