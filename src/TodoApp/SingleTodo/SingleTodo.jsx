@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Icon from '../UI/Icon';
 
-export default function SingleTodo({ title, isDone: isDoneProp }) {
+export default function SingleTodo({ id, title, isDone: isDoneProp, onDelete }) {
   const [isDone, setIsDone] = useState(isDoneProp);
 
   // fa-check-circle => done todo
@@ -31,7 +31,7 @@ export default function SingleTodo({ title, isDone: isDoneProp }) {
       <Icon onClick={clickHandler} icon={isDone === true ? 'fa-check-circle' : 'fa-circle-thin'} />
       <span className='text'>{title}</span>
       <Icon icon='fa-pencil' />
-      <Icon icon='fa-trash' />
+      <Icon onClick={() => onDelete(id)} icon='fa-trash' />
     </li>
   );
 }

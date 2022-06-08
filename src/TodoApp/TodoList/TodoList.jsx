@@ -3,14 +3,14 @@ import AddTodo from '../AddTodo/AddTodo';
 import SingleTodo from '../SingleTodo/SingleTodo';
 
 const initTodos = [
-  //   { id: 1, title: 'Do sport', isDone: true },
-  //   { id: 2, title: 'Do jogging', isDone: false },
+  { id: 1, title: 'Do sport', isDone: true },
+  { id: 2, title: 'Do jogging', isDone: false },
 ];
 
 export default function TodoList() {
   const [todoArray, setTodoArray] = useState(initTodos);
   const [newTodo, setNewTodo] = useState('');
-  const [currentId, setCurrentId] = useState(4);
+  const [currentId, setCurrentId] = useState(3);
 
   console.log('todoArray ===', todoArray);
 
@@ -41,6 +41,12 @@ export default function TodoList() {
     return;
   }
 
+  function handleDelete(deleteId) {
+    console.log('handleDelete was iniciated by ===', deleteId);
+    // const afterDelArray = todoArray.filter((todo) => todo.id !== id);
+    // setTodoArray(afterDelArray);
+  }
+
   // { id: 3, title: 'Buy sugar', isDone: false }
   // iskvieciam funkcija su mygtuko paspaudimu
 
@@ -54,7 +60,7 @@ export default function TodoList() {
     <section className='content'>
       <ul id='list' className='list'>
         {todoArray.map((tObj) => (
-          <SingleTodo key={tObj.id} title={tObj.title} isDone={tObj.isDone} />
+          <SingleTodo key={tObj.id} id={tObj.id} title={tObj.title} isDone={tObj.isDone} onDelete={handleDelete} />
         ))}
 
         {/* <SingleTodo {...todoArray[0]} /> */}
